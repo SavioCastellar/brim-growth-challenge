@@ -1,0 +1,790 @@
+﻿[
+    {
+      "company_name": "Innovatech Solutions",
+      "employee_count": 120,
+      "industry": "SaaS",
+      "funding_stage": "Series B",
+      "tech_stack": [
+        "Salesforce",
+        "Slack",
+        "AWS"
+      ],
+      "recent_job_posts": [
+        "Sales Development Representative",
+        "Head of Operations"
+      ],
+      "news_mentions": [
+        "Innovatech Solutions raises $20M in Series B funding"
+      ]
+    },
+    {
+      "company_name": "DataDriven Corp",
+      "employee_count": 250,
+      "industry": "Fintech",
+      "funding_stage": "Series C",
+      "tech_stack": [
+        "HubSpot",
+        "Zapier",
+        "Azure"
+      ],
+      "recent_job_posts": [
+        "Data Analyst",
+        "Automation Engineer"
+      ],
+      "news_mentions": []
+    },
+    {
+      "company_name": "Legacy Manufacturing",
+      "employee_count": 500,
+      "industry": "Manufacturing",
+      "funding_stage": null,
+      "tech_stack": [],
+      "recent_job_posts": [
+        "Factory Worker"
+      ],
+      "news_mentions": [
+        "Legacy Manufacturing expands production line"
+      ]
+    },
+    {
+      "company_name": "SmartDynamics",
+      "employee_count": 843,
+      "industry": "AI",
+      "funding_stage": "Series A",
+      "tech_stack": [
+        "Kubernetes",
+        "Docker",
+        "Zapier"
+      ],
+      "recent_job_posts": [
+        "Customer Success"
+      ],
+      "news_mentions": []
+    },
+    {
+      "company_name": "NextDynamics",
+      "employee_count": 220,
+      "industry": "Healthcare",
+      "funding_stage": "IPO",
+      "tech_stack": [],
+      "recent_job_posts": [
+        "Product Manager",
+        "Customer Success",
+        "Software Engineer"
+      ],
+      "news_mentions": []
+    },
+    {
+      "company_name": "SmartSolutions",
+      "employee_count": 626,
+      "industry": "Biotech",
+      "funding_stage": "Series B",
+      "tech_stack": [
+        "AWS",
+        "HubSpot",
+        "Kubernetes",
+        "Salesforce"
+      ],
+      "recent_job_posts": [
+        "Marketing Specialist",
+        "Customer Success",
+        "Data Analyst"
+      ],
+      "news_mentions": []
+    },
+    {
+      "company_name": "GreenCorp",
+      "employee_count": 411,
+      "industry": "Healthcare",
+      "funding_stage": "IPO",
+      "tech_stack": [
+        "Kubernetes",
+        "GCP",
+        "HubSpot"
+      ],
+      "recent_job_posts": [
+        "Marketing Specialist",
+        "Factory Worker",
+        "UX Designer"
+      ],
+      "news_mentions": [
+        "GreenCorp raises $80M in IPO funding"
+      ]
+    },
+    {
+      "company_name": "NextTech",
+      "employee_count": 358,
+      "industry": "SaaS",
+      "funding_stage": "Series B",
+      "tech_stack": [
+        "GCP",
+        "HubSpot"
+      ],
+      "recent_job_posts": [
+        "Software Engineer",
+        "Data Analyst"
+      ],
+      "news_mentions": []
+    },
+    {
+      "company_name": "AlphaWorks",
+      "employee_count": 306,
+      "industry": "Education",
+      "funding_stage": null,
+      "tech_stack": [
+        "Docker",
+        "Slack"
+      ],
+      "recent_job_posts": [
+        "Marketing Specialist"
+      ],
+      "news_mentions": []
+    },
+    {
+      "company_name": "QuantumSolutions",
+      "employee_count": 470,
+      "industry": "Fintech",
+      "funding_stage": "IPO",
+      "tech_stack": [
+        "AWS",
+        "Zapier",
+        "Azure",
+        "Kubernetes"
+      ],
+      "recent_job_posts": [
+        "Product Manager"
+      ],
+      "news_mentions": [
+        "QuantumSolutions launches new product line"
+      ]
+    },
+    {
+      "company_name": "GreenWorks",
+      "employee_count": 319,
+      "industry": "Fintech",
+      "funding_stage": "Series B",
+      "tech_stack": [
+        "Jira"
+      ],
+      "recent_job_posts": [
+        "Product Manager"
+      ],
+      "news_mentions": []
+    },
+    {
+      "company_name": "BlueSystems",
+      "employee_count": 330,
+      "industry": "Biotech",
+      "funding_stage": "Seed",
+      "tech_stack": [],
+      "recent_job_posts": [
+        "Marketing Specialist"
+      ],
+      "news_mentions": [
+        "BlueSystems launches new product line"
+      ]
+    },
+    {
+      "company_name": "BlueDynamics",
+      "employee_count": 707,
+      "industry": "Education",
+      "funding_stage": "Seed",
+      "tech_stack": [],
+      "recent_job_posts": [
+        "Marketing Specialist"
+      ],
+      "news_mentions": [
+        "BlueDynamics expands into international markets"
+      ]
+    },
+    {
+      "company_name": "AlphaIndustries",
+      "employee_count": 869,
+      "industry": "E-commerce",
+      "funding_stage": "IPO",
+      "tech_stack": [
+        "HubSpot",
+        "Salesforce",
+        "Kubernetes"
+      ],
+      "recent_job_posts": [
+        "Data Analyst",
+        "Marketing Specialist"
+      ],
+      "news_mentions": []
+    },
+    {
+      "company_name": "QuantumTech",
+      "employee_count": 504,
+      "industry": "Fintech",
+      "funding_stage": "Series C",
+      "tech_stack": [
+        "Jira"
+      ],
+      "recent_job_posts": [
+        "Data Analyst"
+      ],
+      "news_mentions": []
+    },
+    {
+      "company_name": "SmartSystems",
+      "employee_count": 831,
+      "industry": "Biotech",
+      "funding_stage": "Seed",
+      "tech_stack": [
+        "Slack",
+        "HubSpot",
+        "Jira",
+        "Azure"
+      ],
+      "recent_job_posts": [
+        "Factory Worker",
+        "Marketing Specialist"
+      ],
+      "news_mentions": [
+        "SmartSystems partners with leading tech company"
+      ]
+    },
+    {
+      "company_name": "QuantumCorp",
+      "employee_count": 972,
+      "industry": "Healthcare",
+      "funding_stage": "Series B",
+      "tech_stack": [
+        "Zapier",
+        "Jira"
+      ],
+      "recent_job_posts": [
+        "Customer Success"
+      ],
+      "news_mentions": []
+    },
+    {
+      "company_name": "GreenSystems",
+      "employee_count": 523,
+      "industry": "Biotech",
+      "funding_stage": null,
+      "tech_stack": [
+        "Jira",
+        "Azure",
+        "Slack",
+        "Zapier"
+      ],
+      "recent_job_posts": [
+        "Data Analyst"
+      ],
+      "news_mentions": []
+    },
+    {
+      "company_name": "NextIndustries",
+      "employee_count": 132,
+      "industry": "AI",
+      "funding_stage": "IPO",
+      "tech_stack": [
+        "HubSpot",
+        "Docker",
+        "Salesforce"
+      ],
+      "recent_job_posts": [
+        "Marketing Specialist"
+      ],
+      "news_mentions": [
+        "NextIndustries raises $66M in IPO funding"
+      ]
+    },
+    {
+      "company_name": "AlphaSystems",
+      "employee_count": 172,
+      "industry": "SaaS",
+      "funding_stage": "Seed",
+      "tech_stack": [
+        "HubSpot"
+      ],
+      "recent_job_posts": [
+        "UX Designer",
+        "Data Analyst",
+        "Software Engineer"
+      ],
+      "news_mentions": [
+        "AlphaSystems partners with leading tech company"
+      ]
+    },
+    {
+      "company_name": "FutureDynamics",
+      "employee_count": 894,
+      "industry": "Education",
+      "funding_stage": "Series A",
+      "tech_stack": [
+        "Salesforce",
+        "Azure"
+      ],
+      "recent_job_posts": [
+        "Factory Worker"
+      ],
+      "news_mentions": []
+    },
+    {
+      "company_name": "GreenTech",
+      "employee_count": 454,
+      "industry": "Healthcare",
+      "funding_stage": "Series C",
+      "tech_stack": [],
+      "recent_job_posts": [
+        "Data Analyst",
+        "Product Manager"
+      ],
+      "news_mentions": [
+        "GreenTech partners with leading tech company"
+      ]
+    },
+    {
+      "company_name": "SmartCorp",
+      "employee_count": 808,
+      "industry": "Education",
+      "funding_stage": "Seed",
+      "tech_stack": [
+        "Azure"
+      ],
+      "recent_job_posts": [
+        "Software Engineer",
+        "Customer Success"
+      ],
+      "news_mentions": [
+        "SmartCorp raises $82M in Seed funding"
+      ]
+    },
+    {
+      "company_name": "BrightWorks",
+      "employee_count": 133,
+      "industry": "Manufacturing",
+      "funding_stage": "Series C",
+      "tech_stack": [
+        "Azure",
+        "Jira"
+      ],
+      "recent_job_posts": [
+        "Data Analyst",
+        "Factory Worker",
+        "Software Engineer"
+      ],
+      "news_mentions": []
+    },
+    {
+      "company_name": "AlphaCorp",
+      "employee_count": 928,
+      "industry": "Healthcare",
+      "funding_stage": "IPO",
+      "tech_stack": [
+        "Kubernetes",
+        "HubSpot",
+        "GCP"
+      ],
+      "recent_job_posts": [
+        "UX Designer"
+      ],
+      "news_mentions": [
+        "AlphaCorp launches new product line"
+      ]
+    },
+    {
+      "company_name": "BrightTech",
+      "employee_count": 857,
+      "industry": "Biotech",
+      "funding_stage": "IPO",
+      "tech_stack": [],
+      "recent_job_posts": [
+        "Factory Worker",
+        "Marketing Specialist",
+        "Product Manager"
+      ],
+      "news_mentions": [
+        "BrightTech raises $79M in IPO funding"
+      ]
+    },
+    {
+      "company_name": "SmartIndustries",
+      "employee_count": 958,
+      "industry": "Manufacturing",
+      "funding_stage": "Series A",
+      "tech_stack": [
+        "Jira",
+        "Kubernetes",
+        "Azure",
+        "Docker"
+      ],
+      "recent_job_posts": [
+        "Data Analyst"
+      ],
+      "news_mentions": [
+        "SmartIndustries launches new product line"
+      ]
+    },
+    {
+      "company_name": "BrightSystems",
+      "employee_count": 115,
+      "industry": "Biotech",
+      "funding_stage": "Series B",
+      "tech_stack": [
+        "GCP",
+        "Kubernetes",
+        "Jira",
+        "Salesforce"
+      ],
+      "recent_job_posts": [
+        "Product Manager",
+        "Factory Worker",
+        "Software Engineer"
+      ],
+      "news_mentions": []
+    },
+    {
+      "company_name": "SmartWorks",
+      "employee_count": 374,
+      "industry": "Healthcare",
+      "funding_stage": "IPO",
+      "tech_stack": [
+        "HubSpot",
+        "Zapier"
+      ],
+      "recent_job_posts": [
+        "Data Analyst",
+        "Marketing Specialist"
+      ],
+      "news_mentions": [
+        "SmartWorks expands into international markets"
+      ]
+    },
+    {
+      "company_name": "FutureCorp",
+      "employee_count": 32,
+      "industry": "Healthcare",
+      "funding_stage": "Series B",
+      "tech_stack": [
+        "HubSpot"
+      ],
+      "recent_job_posts": [
+        "Product Manager",
+        "Software Engineer",
+        "Customer Success"
+      ],
+      "news_mentions": [
+        "FutureCorp raises $96M in Series B funding"
+      ]
+    },
+    {
+      "company_name": "GreenDynamics",
+      "employee_count": 355,
+      "industry": "Fintech",
+      "funding_stage": null,
+      "tech_stack": [
+        "Kubernetes",
+        "Slack"
+      ],
+      "recent_job_posts": [
+        "Product Manager",
+        "Data Analyst",
+        "UX Designer"
+      ],
+      "news_mentions": []
+    },
+    {
+      "company_name": "GreenIndustries",
+      "employee_count": 632,
+      "industry": "Biotech",
+      "funding_stage": "Series C",
+      "tech_stack": [
+        "Salesforce"
+      ],
+      "recent_job_posts": [
+        "Product Manager",
+        "Factory Worker",
+        "Data Analyst"
+      ],
+      "news_mentions": []
+    },
+    {
+      "company_name": "NextWorks",
+      "employee_count": 954,
+      "industry": "Manufacturing",
+      "funding_stage": "Series A",
+      "tech_stack": [
+        "Zapier"
+      ],
+      "recent_job_posts": [
+        "Customer Success",
+        "UX Designer"
+      ],
+      "news_mentions": [
+        "NextWorks raises $76M in Series A funding"
+      ]
+    },
+    {
+      "company_name": "QuantumDynamics",
+      "employee_count": 846,
+      "industry": "SaaS",
+      "funding_stage": "IPO",
+      "tech_stack": [],
+      "recent_job_posts": [
+        "Factory Worker"
+      ],
+      "news_mentions": [
+        "QuantumDynamics launches new product line"
+      ]
+    },
+    {
+      "company_name": "FutureWorks",
+      "employee_count": 512,
+      "industry": "SaaS",
+      "funding_stage": "Series C",
+      "tech_stack": [
+        "Zapier",
+        "Slack",
+        "Azure",
+        "Salesforce"
+      ],
+      "recent_job_posts": [
+        "Software Engineer",
+        "Marketing Specialist"
+      ],
+      "news_mentions": [
+        "FutureWorks raises $80M in Series C funding"
+      ]
+    },
+    {
+      "company_name": "QuantumSystems",
+      "employee_count": 962,
+      "industry": "Fintech",
+      "funding_stage": "Series B",
+      "tech_stack": [],
+      "recent_job_posts": [
+        "Customer Success"
+      ],
+      "news_mentions": [
+        "QuantumSystems partners with leading tech company"
+      ]
+    },
+    {
+      "company_name": "BlueCorp",
+      "employee_count": 334,
+      "industry": "Biotech",
+      "funding_stage": "Series A",
+      "tech_stack": [
+        "Azure",
+        "Kubernetes"
+      ],
+      "recent_job_posts": [
+        "Marketing Specialist",
+        "Data Analyst",
+        "UX Designer"
+      ],
+      "news_mentions": [
+        "BlueCorp raises $7M in Series A funding"
+      ]
+    },
+    {
+      "company_name": "BlueIndustries",
+      "employee_count": 163,
+      "industry": "AI",
+      "funding_stage": "IPO",
+      "tech_stack": [],
+      "recent_job_posts": [
+        "Data Analyst",
+        "Factory Worker"
+      ],
+      "news_mentions": [
+        "BlueIndustries raises $30M in IPO funding"
+      ]
+    },
+    {
+      "company_name": "QuantumWorks",
+      "employee_count": 312,
+      "industry": "E-commerce",
+      "funding_stage": "Series C",
+      "tech_stack": [
+        "Jira"
+      ],
+      "recent_job_posts": [
+        "Data Analyst",
+        "Factory Worker"
+      ],
+      "news_mentions": []
+    },
+    {
+      "company_name": "AlphaDynamics",
+      "employee_count": 716,
+      "industry": "SaaS",
+      "funding_stage": "Series B",
+      "tech_stack": [
+        "Azure",
+        "AWS"
+      ],
+      "recent_job_posts": [
+        "Marketing Specialist",
+        "Product Manager",
+        "Customer Success"
+      ],
+      "news_mentions": [
+        "AlphaDynamics expands into international markets"
+      ]
+    },
+    {
+      "company_name": "BrightSolutions",
+      "employee_count": 863,
+      "industry": "Fintech",
+      "funding_stage": "Series A",
+      "tech_stack": [
+        "Kubernetes",
+        "Zapier",
+        "Slack"
+      ],
+      "recent_job_posts": [
+        "Marketing Specialist",
+        "Data Analyst"
+      ],
+      "news_mentions": [
+        "BrightSolutions launches new product line"
+      ]
+    },
+    {
+      "company_name": "NextSolutions",
+      "employee_count": 769,
+      "industry": "Manufacturing",
+      "funding_stage": "Series B",
+      "tech_stack": [],
+      "recent_job_posts": [
+        "Product Manager",
+        "Data Analyst",
+        "Factory Worker"
+      ],
+      "news_mentions": [
+        "NextSolutions raises $93M in Series B funding"
+      ]
+    },
+    {
+      "company_name": "AlphaSolutions",
+      "employee_count": 939,
+      "industry": "Healthcare",
+      "funding_stage": "Seed",
+      "tech_stack": [
+        "Salesforce",
+        "Docker"
+      ],
+      "recent_job_posts": [
+        "Factory Worker",
+        "UX Designer"
+      ],
+      "news_mentions": [
+        "AlphaSolutions partners with leading tech company"
+      ]
+    },
+    {
+      "company_name": "AlphaTech",
+      "employee_count": 766,
+      "industry": "AI",
+      "funding_stage": "IPO",
+      "tech_stack": [
+        "Docker",
+        "HubSpot",
+        "Salesforce",
+        "Kubernetes"
+      ],
+      "recent_job_posts": [
+        "Factory Worker",
+        "Data Analyst",
+        "Marketing Specialist"
+      ],
+      "news_mentions": [
+        "AlphaTech expands into international markets"
+      ]
+    },
+    {
+      "company_name": "FutureTech",
+      "employee_count": 328,
+      "industry": "Education",
+      "funding_stage": "IPO",
+      "tech_stack": [],
+      "recent_job_posts": [
+        "UX Designer"
+      ],
+      "news_mentions": [
+        "FutureTech expands into international markets"
+      ]
+    },
+    {
+      "company_name": "FutureSystems",
+      "employee_count": 344,
+      "industry": "SaaS",
+      "funding_stage": "Seed",
+      "tech_stack": [
+        "Jira",
+        "HubSpot",
+        "AWS"
+      ],
+      "recent_job_posts": [
+        "Product Manager",
+        "Data Analyst"
+      ],
+      "news_mentions": []
+    },
+    {
+      "company_name": "NextSystems",
+      "employee_count": 175,
+      "industry": "Healthcare",
+      "funding_stage": null,
+      "tech_stack": [
+        "Salesforce",
+        "Azure"
+      ],
+      "recent_job_posts": [
+        "Data Analyst"
+      ],
+      "news_mentions": []
+    },
+    {
+      "company_name": "BrightDynamics",
+      "employee_count": 292,
+      "industry": "Fintech",
+      "funding_stage": "Series A",
+      "tech_stack": [
+        "HubSpot",
+        "Salesforce",
+        "Docker"
+      ],
+      "recent_job_posts": [
+        "Marketing Specialist",
+        "Software Engineer"
+      ],
+      "news_mentions": [
+        "BrightDynamics expands into international markets"
+      ]
+    },
+    {
+      "company_name": "FutureSolutions",
+      "employee_count": 343,
+      "industry": "Fintech",
+      "funding_stage": "Series A",
+      "tech_stack": [
+        "Kubernetes"
+      ],
+      "recent_job_posts": [
+        "UX Designer"
+      ],
+      "news_mentions": []
+    },
+    {
+      "company_name": "BrightIndustries",
+      "employee_count": 785,
+      "industry": "Biotech",
+      "funding_stage": "IPO",
+      "tech_stack": [
+        "Kubernetes",
+        "Docker"
+      ],
+      "recent_job_posts": [
+        "Data Analyst",
+        "Product Manager",
+        "Factory Worker"
+      ],
+      "news_mentions": []
+    }
+  ]
