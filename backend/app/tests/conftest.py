@@ -21,7 +21,7 @@ TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engin
 @pytest.fixture(scope="module")
 def setup_database():
     """
-    Cria as tabelas do banco de dados uma vez por módulo de teste.
+    Creates the database tables once per test module.
     """
     Base.metadata.create_all(bind=engine)
     yield
@@ -30,7 +30,7 @@ def setup_database():
 @pytest.fixture(scope="function")
 def db_session(setup_database):
     """
-    Fornece uma sessão de banco de dados que é revertida após cada teste.
+    Provides a database session that is rolled back after each test.
     """
     connection = engine.connect()
     transaction = connection.begin()
@@ -46,7 +46,7 @@ def db_session(setup_database):
 @pytest.fixture(scope="function")
 def client(db_session):
     """
-    Fornece um TestClient do FastAPI que usa o banco de dados de teste.
+    Provides a FastAPI TestClient that uses the test database.
     """
     def override_get_db():
         try:

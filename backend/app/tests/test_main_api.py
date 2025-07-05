@@ -3,18 +3,23 @@ from sqlalchemy.orm import Session
 from app.models.event_model import Event
 
 def test_score_company_endpoint_success(client: TestClient, db_session: Session):
-    """Testa uma requisição bem-sucedida ao endpoint /api/score-company."""
+    """
+    Tests a successful request to the /api/score-company endpoint.
+    """
     response = client.post(
         "/api/score-company?model=aggressive",
         json={"company_name": "API Test Corp", "employee_count": 50}
     )
+
     assert response.status_code == 200
     data = response.json()
     assert data["company_id"] is not None
     assert data["total_score"] >= 0
 
 def test_score_company_logs_event(client: TestClient, db_session: Session):
-    """Testa se um evento é corretamente registrado no banco de dados após uma chamada à API."""
+    """
+    Tests whether an event is correctly logged to the database after an API call.
+    """
     initial_event_count = db_session.query(Event).count()
 
     client.post(
@@ -29,6 +34,8 @@ def test_score_company_logs_event(client: TestClient, db_session: Session):
     assert new_event.event_type == "score_calculated"
 
 def test_score_company_bad_input(client: TestClient):
-    """Testa a resposta da API a uma entrada malformada (campo obrigatório ausente)."""
+    """
+    Tests the API response to malformed input (missing required field).
+    """
     response = client.post("/api/score-company", json={"employee_count": 100})
     assert response.status_code == 422

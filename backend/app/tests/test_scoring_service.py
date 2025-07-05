@@ -4,7 +4,9 @@ from fastapi.testclient import TestClient
 from sqlalchemy.orm import Session
 
 def test_calculate_scores_happy_path():
-    """Testa o cenário ideal com dados completos."""
+    """
+    Test the ideal scenario with complete data.
+    """
     company = CompanyInput(
         company_name="Test Corp",
         employee_count=100,
@@ -17,16 +19,19 @@ def test_calculate_scores_happy_path():
     assert result.confidence > 0.5
 
 def test_calculate_scores_with_missing_data():
-    """Testa se o serviço lida com dados ausentes sem erros."""
-    company = CompanyInput(company_name="Empty Corp") # Apenas o campo obrigatório
+    """
+    Tests whether the service handles missing data without errors.
+    """
+    company = CompanyInput(company_name="Empty Corp")
 
-    # Este teste passa se nenhuma exceção for levantada
     result = scoring_service.calculate_scores(company, ScoringModel.BALANCED)
     assert result.confidence < 0.3
     assert "funding_stage" in result.reasoning["missing"]
 
 def test_different_scoring_models():
-    """Testa se os diferentes modelos de pontuação produzem resultados diferentes."""
+    """
+    Tests whether different scoring models produce different results.
+    """
     company = CompanyInput(
         company_name="Model Test Inc.",
         employee_count=150,
