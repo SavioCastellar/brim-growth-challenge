@@ -37,7 +37,7 @@ def calculate_scores(company: CompanyInput, model: ScoringModel) -> ScoringOutpu
 
     # Confidence Score Calculation (based on data completeness)
     total_fields = len(CompanyInput.model_fields)
-    provided_fields = sum(1 for field in company.model_dump().values() if field)
+    provided_fields = sum(1 for field in company.dict().values() if field)
     confidence = round(provided_fields / total_fields, 2)
 
     # Generate a unique ID and reasoning
