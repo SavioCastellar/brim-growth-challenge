@@ -5,3 +5,6 @@ pydantic
 pytest
 pytest-cov
 httpx
+google-generativeai
+apscheduler
+pytest-mock
