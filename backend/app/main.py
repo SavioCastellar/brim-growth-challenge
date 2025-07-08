@@ -3,13 +3,27 @@ from fastapi import FastAPI, HTTPException, Depends, BackgroundTasks
 from sqlalchemy.orm import Session
 from apscheduler.schedulers.background import BackgroundScheduler
 from contextlib import asynccontextmanager
+from typing import List
 
-from app.models.schemas import CompanyInput, ScoringOutput, ScoringModel
-from app.services import scoring_service, event_service, email_generation_service
-from app.database import engine, get_db
+from app.models.schemas import (
+    CompanyInput,
+    ScoringOutput,
+    ScoringModel,
+    ActivationEventInput,
+    ScoreDistributionItem,
+    TopLeadItem,
+    FunnelStep,
+    EmailPerformanceItem,
+)
+from app.services import (
+    scoring_service,
+    event_service,
+    email_generation_service,
+    email_sending_service,
+    analytics_service,
+)
+from app.database import engine, get_db, SessionLocal
 from app.models import event_model
-from app.database import SessionLocal
-from app.services import email_sending_service
 
 logging.basicConfig(
     level=logging.INFO,
@@ -47,12 +61,10 @@ def score_company(
     model: ScoringModel = ScoringModel.BALANCED,
     db: Session = Depends(get_db),
 ):
-    """
-    Receives company data, returns score and logs the event.
-    """
+    """Receives company data, returns score and logs the event."""
     try:
         score_result = scoring_service.calculate_scores(company_input, model)
-        event_service.log_score_calculated_event(db, score_result, model.value)
+        event_service.log_score_calculated_event(db, score_result, model.value, company_input)
 
         background_tasks.add_task(
             email_generation_service.generate_and_save_email_content,
@@ -73,12 +85,43 @@ def shutdown_event():
 
 
 def run_email_worker_cycle():
-    """
-    Creates a DB session, runs the email sending worker, and ensures the session is closed.
-    This is the function that the scheduler will call periodically.
-    """
+    """Creates a DB session, runs the email sending worker, and ensures the session is closed.
+    This is the function that the scheduler will call periodically."""
     db = SessionLocal()
     try:
         email_sending_service.send_prioritized_emails(db)
     finally:
         db.close()
+
+
+@app.post("/api/activation/log-event", status_code=201, tags=["Activation"])
+def log_event_from_frontend(
+    event_input: ActivationEventInput, db: Session = Depends(get_db)
+):
+    """Receives and registers an event from the activation flow."""
+    event_service.log_activation_event(db, event_data=event_input)
+    return {"message": "Event logged successfully"}
+
+
+@app.get(
+    "/api/analytics/lead-score-distribution",
+    response_model=List[ScoreDistributionItem],
+    tags=["Analytics"],
+)
+def get_score_distribution(db: Session = Depends(get_db)):
+    return analytics_service.get_lead_score_distribution(db)
+
+
+@app.get("/api/analytics/top-leads", response_model=List[TopLeadItem], tags=["Analytics"])
+def get_top_leads_route(db: Session = Depends(get_db)):
+    return analytics_service.get_top_leads(db)
+
+
+@app.get("/api/analytics/activation-funnel", response_model=List[FunnelStep], tags=["Analytics"])
+def get_activation_funnel_route(db: Session = Depends(get_db)):
+    return analytics_service.get_activation_funnel(db)
+
+
+@app.get("/api/analytics/email-performance", response_model=List[EmailPerformanceItem], tags=["Analytics"])
+def get_email_performance_route(db: Session = Depends(get_db)):
+    return analytics_service.get_email_performance(db)
