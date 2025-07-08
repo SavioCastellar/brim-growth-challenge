@@ -1,4 +1,4 @@
-﻿from sqlalchemy import Column, Integer, String, Boolean, Float, DateTime, Text, func
+﻿from sqlalchemy import Column, Integer, String, Boolean, Float, DateTime, Text, func, JSON
 from app.database import Base
 
 class Event(Base):
@@ -6,10 +6,12 @@ class Event(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     event_type = Column(String, index=True, nullable=False)
-    company_id = Column(String, index=True, nullable=False)
-    model = Column(String)
-    total_score = Column(Integer)
     timestamp = Column(DateTime(timezone=True), server_default=func.now())
+
+    user_id = Column(String, index=True, nullable=True)
+    company_id = Column(String, index=True, nullable=True)
+
+    event_data = Column(JSON, nullable=True)
 
 class OutboundEmail(Base):
     __tablename__ = "outbound_emails"
