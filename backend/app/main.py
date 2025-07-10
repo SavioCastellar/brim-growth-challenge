@@ -1,9 +1,19 @@
 import logging
-from fastapi import FastAPI, HTTPException, Depends, BackgroundTasks
+from fastapi import (
+    FastAPI,
+    HTTPException,
+    Depends,
+    BackgroundTasks,
+    Query,
+    UploadFile,
+    File,
+)
 from sqlalchemy.orm import Session
 from apscheduler.schedulers.background import BackgroundScheduler
 from contextlib import asynccontextmanager
 from typing import List
+from datetime import date, timedelta
+import json
 
 from app.models.schemas import (
     CompanyInput,
@@ -14,6 +24,9 @@ from app.models.schemas import (
     TopLeadItem,
     FunnelStep,
     EmailPerformanceItem,
+    KpiCardData,
+    FunnelTrendItem,
+    ScoredLeadData,
 )
 from app.services import (
     scoring_service,
@@ -64,14 +77,15 @@ def score_company(
     """Receives company data, returns score and logs the event."""
     try:
         score_result = scoring_service.calculate_scores(company_input, model)
-        event_service.log_score_calculated_event(db, score_result, model.value, company_input)
+        event_service.log_score_calculated_event(
+            db, score_result, model.value, company_input
+        )
 
         background_tasks.add_task(
             email_generation_service.generate_and_save_email_content,
             SessionLocal,
-            score_result.company_id,
-            company_input.company_name,
-            score_result.total_score,
+            company_input,
+            score_result,
         )
 
         return score_result
@@ -103,25 +117,142 @@ def log_event_from_frontend(
     return {"message": "Event logged successfully"}
 
 
+def get_tomorrow() -> date:
+    return date.today() + timedelta(days=1)
+
+
 @app.get(
-    "/api/analytics/lead-score-distribution",
-    response_model=List[ScoreDistributionItem],
+    "/api/analytics/kpi/qualified-leads",
+    response_model=KpiCardData,
+    tags=["Analytics KPI"],
+)
+def get_qualified_leads_kpi_route(
+    end_date: date = Query(default_factory=get_tomorrow),
+    days: int = Query(default=30, ge=1),
+    db: Session = Depends(get_db),
+):
+    """
+    Provides KPI data for the number of qualified leads.
+    Compares the last 'days' with the period immediately preceding it.
+    """
+    start_date = end_date - timedelta(days=days)
+    return analytics_service.get_qualified_leads_kpi(
+        db, start_date=start_date, end_date=end_date
+    )
+
+
+@app.get(
+    "/api/analytics/kpi/email-engagement",
+    response_model=KpiCardData,
+    tags=["Analytics KPI"],
+)
+def get_email_engagement_kpi_route(
+    end_date: date = Query(default_factory=get_tomorrow),
+    days: int = Query(default=30, ge=1),
+    db: Session = Depends(get_db),
+):
+    """
+    Provides KPI data for simulated email engagement (CTR).
+    """
+    start_date = end_date - timedelta(days=days)
+    return analytics_service.get_email_engagement_kpi(
+        db, start_date=start_date, end_date=end_date
+    )
+
+
+@app.get(
+    "/api/analytics/kpi/new-activations",
+    response_model=KpiCardData,
+    tags=["Analytics KPI"],
+)
+def get_new_activations_kpi_route(
+    end_date: date = Query(default_factory=get_tomorrow),
+    days: int = Query(default=30, ge=1),
+    db: Session = Depends(get_db),
+):
+    """
+    Provides KPI data for new user activations.
+    """
+    start_date = end_date - timedelta(days=days)
+    return analytics_service.get_new_activations_kpi(
+        db, start_date=start_date, end_date=end_date
+    )
+
+
+@app.get(
+    "/api/analytics/kpi/funnel-conversion-rate",
+    response_model=KpiCardData,
+    tags=["Analytics KPI"],
+)
+def get_funnel_conversion_rate_kpi_route(
+    end_date: date = Query(default_factory=get_tomorrow),
+    days: int = Query(default=30, ge=1),
+    db: Session = Depends(get_db),
+):
+    """
+    Provides KPI data for the main funnel conversion rate (lead->activation).
+    """
+    start_date = end_date - timedelta(days=days)
+    return analytics_service.get_funnel_conversion_rate_kpi(
+        db, start_date=start_date, end_date=end_date
+    )
+
+
+@app.get(
+    "/api/analytics/funnel-over-time",
+    response_model=List[FunnelTrendItem],
     tags=["Analytics"],
 )
-def get_score_distribution(db: Session = Depends(get_db)):
-    return analytics_service.get_lead_score_distribution(db)
+def get_funnel_over_time_route(
+    end_date: date = Query(default_factory=get_tomorrow),
+    days: int = Query(default=30, ge=1),
+    db: Session = Depends(get_db),
+):
+    """
+    Provides time-series data for key funnel metrics.
+    """
+    start_date = end_date - timedelta(days=days)
+    return analytics_service.get_funnel_over_time(
+        db, start_date=start_date, end_date=end_date
+    )
 
 
-@app.get("/api/analytics/top-leads", response_model=List[TopLeadItem], tags=["Analytics"])
-def get_top_leads_route(db: Session = Depends(get_db)):
-    return analytics_service.get_top_leads(db)
+@app.get(
+    "/api/analytics/scored-leads-table",
+    response_model=List[ScoredLeadData],
+    tags=["Analytics"],
+)
+def get_scored_leads_table_route(db: Session = Depends(get_db)):
+    """
+    Provides data for the main table of scored leads.
+    """
+    return analytics_service.get_scored_leads_table_data(db)
 
 
-@app.get("/api/analytics/activation-funnel", response_model=List[FunnelStep], tags=["Analytics"])
-def get_activation_funnel_route(db: Session = Depends(get_db)):
-    return analytics_service.get_activation_funnel(db)
+@app.post("/api/leads/batch-score", status_code=202, tags=["Leads"])
+async def batch_score_leads(
+    background_tasks: BackgroundTasks,
+    file: UploadFile = File(...),
+):
+    """
+    Accepts a JSON file with a list of companies, and scores them
+    asynchronously in the background.
+    """
+    if not file.filename.endswith(".json"):
+        raise HTTPException(
+            status_code=400, detail="Invalid file type. Please upload a JSON file."
+        )
 
+    contents = await file.read()
+    try:
+        companies_data = json.loads(contents)
+        if not isinstance(companies_data, list):
+            raise ValueError("JSON must be a list of company objects.")
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=f"Invalid JSON format: {e}")
 
-@app.get("/api/analytics/email-performance", response_model=List[EmailPerformanceItem], tags=["Analytics"])
-def get_email_performance_route(db: Session = Depends(get_db)):
-    return analytics_service.get_email_performance(db)
+    background_tasks.add_task(scoring_service.process_batch_scoring, companies_data)
+
+    return {
+        "message": f"Accepted. Started scoring for {len(companies_data)} companies in the background."
+    }
