@@ -8,3 +8,5 @@ httpx
 google-generativeai
 apscheduler
 pytest-mock
+python-multipart
+asyncio

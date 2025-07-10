@@ -1,10 +1,25 @@
 services:
-  app:
+  backend:
     build:
       context: ./backend
+    platform: linux/amd64
     ports:
       - "8000:8000"
     volumes:
       - ./backend:/app
+    env_file:
+      - ./.env
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
     environment:
-      - DEBUG=True
+      - CHOKIDAR_USEPOLLING=true
+    env_file:
+      - ./frontend/.env.local
+    depends_on:
+      - backend
