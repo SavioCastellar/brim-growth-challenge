@@ -35,7 +35,6 @@ class ScoringOutput(BaseModel):
     action: str
 
 
-
 class ActivationEventInput(BaseModel):
     user_id: str
     step_name: str
@@ -61,3 +60,24 @@ class FunnelStep(BaseModel):
 class EmailPerformanceItem(BaseModel):
     variant_name: str
     count: int
+
+
+class KpiCardData(BaseModel):
+    metric_name: str
+    current_value: float
+    percentage_change: float
+    description: str
+
+
+class FunnelTrendItem(BaseModel):
+    date: str
+    qualified_leads: int
+    activations: int
+
+
+class ScoredLeadData(BaseModel):
+    company_id: str
+    company_name: str
+    status: str
+    email_variant_sent: Optional[str] = None
+    score: int
