@@ -1,6 +1,5 @@
 # Brim - Product & Growth Engineering Challenge
 
-## Project Description
 This repository contains the full-stack implementation for the Brim Product & Growth Engineering Challenge. It includes three integrated systems designed to enhance growth operations: a smart lead scoring engine, a personalized email automation pipeline, and an analytics dashboard with a user activation flow.
 
 ## Prerequisites
