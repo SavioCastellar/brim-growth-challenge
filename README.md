@@ -1,6 +1,5 @@
-# brim-growth-challenge
+# Brim - Product & Growth Engineering Challenge
 
-## Project Description
 This repository contains the full-stack implementation for the Brim Product & Growth Engineering Challenge. It includes three integrated systems designed to enhance growth operations: a smart lead scoring engine, a personalized email automation pipeline, and an analytics dashboard with a user activation flow.
 
 ## Prerequisites
@@ -119,9 +118,6 @@ This file contains tests for both generating and sending emails, using a mix of 
 * **`test_send_emails_when_queue_is_empty`**: Confirms that the email worker runs without errors when there are no emails in the queue to be sent.
 * **`test_generate_and_save_email_happy_path`**: Mocks the external Gemini API to simulate a successful response, and verifies that the generated email variants are correctly parsed and saved to the database.
 * **`test_generate_email_handles_invalid_json`**: Mocks the external Gemini API to simulate an invalid JSON response, ensuring the service handles the error gracefully and does not save any data.
-
-
-## Future Work
 
 ## Future Work
 
