@@ -93,6 +93,35 @@ def score_company(
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.post("/api/leads/batch-score", status_code=202, tags=["Leads"])
+async def batch_score_leads(
+    background_tasks: BackgroundTasks,
+    file: UploadFile = File(...),
+):
+    """
+    Accepts a JSON file with a list of companies, and scores them
+    asynchronously in the background.
+    """
+    if not file.filename.endswith(".json"):
+        raise HTTPException(
+            status_code=400, detail="Invalid file type. Please upload a JSON file."
+        )
+
+    contents = await file.read()
+    try:
+        companies_data = json.loads(contents)
+        if not isinstance(companies_data, list):
+            raise ValueError("JSON must be a list of company objects.")
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=f"Invalid JSON format: {e}")
+
+    background_tasks.add_task(scoring_service.process_batch_scoring, companies_data)
+
+    return {
+        "message": f"Accepted. Started scoring for {len(companies_data)} companies in the background."
+    }
+
+
 @app.on_event("shutdown")
 def shutdown_event():
     scheduler.shutdown()
@@ -227,32 +256,3 @@ def get_scored_leads_table_route(db: Session = Depends(get_db)):
     Provides data for the main table of scored leads.
     """
     return analytics_service.get_scored_leads_table_data(db)
-
-
-@app.post("/api/leads/batch-score", status_code=202, tags=["Leads"])
-async def batch_score_leads(
-    background_tasks: BackgroundTasks,
-    file: UploadFile = File(...),
-):
-    """
-    Accepts a JSON file with a list of companies, and scores them
-    asynchronously in the background.
-    """
-    if not file.filename.endswith(".json"):
-        raise HTTPException(
-            status_code=400, detail="Invalid file type. Please upload a JSON file."
-        )
-
-    contents = await file.read()
-    try:
-        companies_data = json.loads(contents)
-        if not isinstance(companies_data, list):
-            raise ValueError("JSON must be a list of company objects.")
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail=f"Invalid JSON format: {e}")
-
-    background_tasks.add_task(scoring_service.process_batch_scoring, companies_data)
-
-    return {
-        "message": f"Accepted. Started scoring for {len(companies_data)} companies in the background."
-    }

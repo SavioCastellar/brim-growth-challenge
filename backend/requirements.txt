@@ -10,3 +10,4 @@ apscheduler
 pytest-mock
 python-multipart
 asyncio
+pytest-asyncio
