@@ -86,38 +86,8 @@ A scheduled background worker, powered by APScheduler, runs periodically to send
 
 To run the tests, execute the following command:
 ```
-docker-compose exec backend pytest -s
+docker-compose exec backend pytest -s --cov=app
 ```
-
-#### Test Scenarios
-
-This document provides a brief description of each automated test case in the project.
-
-##### Integration Tests (`app/tests/test_main_api.py`)
-
-These tests verify that different parts of the application work together correctly, from the API endpoint to the database.
-
-* **`test_score_company_endpoint_success`**: Verifies that a valid "happy path" request to the `/api/score-company` endpoint returns a 200 OK status and the expected data structure.
-* **`test_score_company_logs_event`**: Ensures that a successful API call correctly logs a `score_calculated` event in the database, validating a critical side-effect.
-* **`test_score_company_bad_input`**: Checks that the API correctly handles invalid data by rejecting a request with missing required fields and returning a 422 error status.
-
-##### Unit Tests (`app/tests/test_scoring_service.py`)
-
-These tests focus on individual functions ("units") in isolation to validate the core business logic.
-
-* **`test_calculate_scores_happy_path`**: Validates the core `calculate_scores` function with complete and ideal input data to ensure it produces a sensible score.
-* **`test_calculate_scores_with_missing_data`**: Confirms that the `calculate_scores` function is resilient and can handle incomplete data gracefully without crashing.
-* **`test_different_scoring_models`**: Verifies that a key feature works as intended by checking that different scoring models (e.g., `AGGRESSIVE` vs. `BALANCED`) produce different scores for the same input data.
-
-##### Email Service Tests (`app/tests/test_email_services.py`)
-
-This file contains tests for both generating and sending emails, using a mix of database integration and mocking for external APIs.
-
-* **`test_send_prioritized_emails_happy_path_and_priority`**: Verifies that the email worker correctly sends emails in descending order of their score and updates their status in the database.
-* **`test_send_emails_respects_limit`**: Ensures the email worker processes no more than the specified limit (5) of emails in a single cycle.
-* **`test_send_emails_when_queue_is_empty`**: Confirms that the email worker runs without errors when there are no emails in the queue to be sent.
-* **`test_generate_and_save_email_happy_path`**: Mocks the external Gemini API to simulate a successful response, and verifies that the generated email variants are correctly parsed and saved to the database.
-* **`test_generate_email_handles_invalid_json`**: Mocks the external Gemini API to simulate an invalid JSON response, ensuring the service handles the error gracefully and does not save any data.
 
 ## Future Work
 
