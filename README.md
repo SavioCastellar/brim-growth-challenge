@@ -120,9 +120,6 @@ This file contains tests for both generating and sending emails, using a mix of 
 * **`test_generate_and_save_email_happy_path`**: Mocks the external Gemini API to simulate a successful response, and verifies that the generated email variants are correctly parsed and saved to the database.
 * **`test_generate_email_handles_invalid_json`**: Mocks the external Gemini API to simulate an invalid JSON response, ensuring the service handles the error gracefully and does not save any data.
 
-
-## Future Work
-
 ## Future Work
 
 #### Improvements for System 1: Smart Lead Scoring Engine
