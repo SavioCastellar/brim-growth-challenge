@@ -24,18 +24,7 @@ git clone https://github.com/SavioCastellar/brim-growth-challenge.git
 cd brim-growth-challenge
 ```
 
-**3. Create the Environment File**
-The project requires an environment file for API keys. Copy the example file to create your own local version.
-```
-# For macOS/Linux
-cp .env.example .env
-
-# For Windows
-copy .env.example .env
-```
-After creating the .env file, be sure to add your GEMINI_API_KEY to it.
-
-**4. Build and Run the Application**
+**3. Build and Run the Application**
 This project uses Docker Compose to build all the necessary images and run all services with a single command.
 
 ```
@@ -49,12 +38,16 @@ This command will:
 - Start the FastAPI backend server and the Next.js frontend development server.
 
 
-**5. Access the Application**
+**4. Access the Application**
 Once the containers are running, the application will be available at the following URLs:
 
 - Frontend Application (Dashboard): http://localhost:3000
 - Backend API Docs (FastAPI): http://localhost:8000/docs
 
+---
+Pages Available:
+- http://localhost:3000/dashboard
+- http://localhost:3000/activation
 
 ## Key Features
 
